@@ -22,10 +22,28 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="#ano"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#autor"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#biografia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#didatico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#fantasia"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#ficcao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ficcao_cientifica"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ficcao_historica"/>
     </Declaration>
     <Declaration>
         <Class IRI="#genero"/>
@@ -34,10 +52,25 @@
         <Class IRI="#livro"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#mundo_ficticio"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#nao_ficcao"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#periodo_historico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#personagem"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#pessoa"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#acontece_em"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aparece_em"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#escreveu"/>
@@ -48,22 +81,109 @@
     <Declaration>
         <ObjectProperty IRI="#gosta"/>
     </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#pertence_genero"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#autor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#escreveu"/>
+            <Class IRI="#livro"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#biografia"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#acontece_em"/>
+            <Class IRI="#ano"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#fantasia"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#acontece_em"/>
+            <Class IRI="#mundo_ficticio"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ficcao_cientifica"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#acontece_em"/>
+            <Class IRI="#ano"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ficcao_historica"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#acontece_em"/>
+            <Class IRI="#periodo_historico"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#livro"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#escrito_por"/>
+            <Class IRI="#autor"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#livro"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#pertence_genero"/>
+            <Class IRI="#genero"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#personagem"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#aparece_em"/>
+            <Class IRI="#livro"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#autor"/>
         <Class IRI="#pessoa"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#biografia"/>
+        <Class IRI="#nao_ficcao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#didatico"/>
+        <Class IRI="#nao_ficcao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#fantasia"/>
+        <Class IRI="#ficcao"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#ficcao"/>
         <Class IRI="#genero"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ficcao_cientifica"/>
+        <Class IRI="#ficcao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ficcao_historica"/>
+        <Class IRI="#ficcao"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#nao_ficcao"/>
         <Class IRI="#genero"/>
     </SubClassOf>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#escreveu"/>
         <ObjectProperty IRI="#escrito_por"/>
+        <ObjectProperty IRI="#escreveu"/>
     </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#acontece_em"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aparece_em"/>
+        <Class IRI="#personagem"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#escreveu"/>
         <Class IRI="#autor"/>
@@ -76,6 +196,22 @@
         <ObjectProperty IRI="#gosta"/>
         <Class IRI="#pessoa"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#pertence_genero"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#acontece_em"/>
+        <ObjectUnionOf>
+            <Class IRI="#ano"/>
+            <Class IRI="#mundo_ficticio"/>
+            <Class IRI="#periodo_historico"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aparece_em"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#escreveu"/>
         <Class IRI="#livro"/>
@@ -87,6 +223,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#gosta"/>
         <Class IRI="#livro"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#pertence_genero"/>
+        <Class IRI="#genero"/>
     </ObjectPropertyRange>
 </Ontology>
 
