@@ -16,10 +16,14 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      ontologyIRI="http://www.semanticweb.org/renan/ontologies/2014/4/untitled-ontology-2">
-    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
-    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#autor"/>
+    </Declaration>
     <Declaration>
         <Class IRI="#ficcao"/>
     </Declaration>
@@ -32,6 +36,22 @@
     <Declaration>
         <Class IRI="#nao_ficcao"/>
     </Declaration>
+    <Declaration>
+        <Class IRI="#pessoa"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#escreveu"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#escrito_por"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#gosta"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#autor"/>
+        <Class IRI="#pessoa"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#ficcao"/>
         <Class IRI="#genero"/>
@@ -40,6 +60,34 @@
         <Class IRI="#nao_ficcao"/>
         <Class IRI="#genero"/>
     </SubClassOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#escreveu"/>
+        <ObjectProperty IRI="#escrito_por"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#escreveu"/>
+        <Class IRI="#autor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#escrito_por"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#gosta"/>
+        <Class IRI="#pessoa"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#escreveu"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#escrito_por"/>
+        <Class IRI="#autor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#gosta"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyRange>
 </Ontology>
 
 
