@@ -22,9 +22,6 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
-        <Class IRI="#ano"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#autor"/>
     </Declaration>
     <Declaration>
@@ -55,16 +52,10 @@
         <Class IRI="#nao_ficcao"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#periodo_historico"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#personagem"/>
     </Declaration>
     <Declaration>
         <Class IRI="#pessoa"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#acontece_em"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#aparece_em"/>
@@ -78,6 +69,21 @@
     <Declaration>
         <ObjectProperty IRI="#gosta"/>
     </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#historia_de"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#historia_em"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#vendeu"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#acontece_em"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#vendeu"/>
+    </Declaration>
     <EquivalentClasses>
         <Class IRI="#autor"/>
         <ObjectSomeValuesFrom>
@@ -86,13 +92,21 @@
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#biografia"/>
+        <Class IRI="#didatico"/>
         <ObjectIntersectionOf>
             <Class IRI="#nao_ficcao"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#acontece_em"/>
-                <Class IRI="#ano"/>
-            </ObjectSomeValuesFrom>
+            <ObjectComplementOf>
+                <ObjectUnionOf>
+                    <ObjectSomeValuesFrom>
+                        <ObjectProperty IRI="#historia_de"/>
+                        <Class IRI="#personagem"/>
+                    </ObjectSomeValuesFrom>
+                    <ObjectSomeValuesFrom>
+                        <ObjectProperty IRI="#historia_de"/>
+                        <Class IRI="#pessoa"/>
+                    </ObjectSomeValuesFrom>
+                </ObjectUnionOf>
+            </ObjectComplementOf>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -100,8 +114,18 @@
         <ObjectIntersectionOf>
             <Class IRI="#ficcao"/>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#acontece_em"/>
+                <ObjectProperty IRI="#historia_em"/>
                 <Class IRI="#mundo_ficticio"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ficcao"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#livro"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#historia_de"/>
+                <Class IRI="#personagem"/>
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
@@ -109,20 +133,20 @@
         <Class IRI="#ficcao_cientifica"/>
         <ObjectIntersectionOf>
             <Class IRI="#ficcao"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#acontece_em"/>
-                <Class IRI="#ano"/>
-            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#acontece_em"/>
+                <Datatype abbreviatedIRI="xsd:dateTime"/>
+            </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#ficcao_historica"/>
         <ObjectIntersectionOf>
             <Class IRI="#ficcao"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#acontece_em"/>
-                <Class IRI="#periodo_historico"/>
-            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#acontece_em"/>
+                <Datatype abbreviatedIRI="xsd:dateTime"/>
+            </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -131,6 +155,18 @@
             <ObjectProperty IRI="#escrito_por"/>
             <Class IRI="#autor"/>
         </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#nao_ficcao"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#livro"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#historia_em"/>
+                    <Class IRI="#mundo_ficticio"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#personagem"/>
@@ -171,17 +207,24 @@
         <Class IRI="#nao_ficcao"/>
         <Class IRI="#livro"/>
     </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#ficcao"/>
+        <Class IRI="#nao_ficcao"/>
+    </DisjointClasses>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#aparece_em"/>
+        <ObjectProperty IRI="#historia_de"/>
+    </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#escrito_por"/>
         <ObjectProperty IRI="#escreveu"/>
     </InverseObjectProperties>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#acontece_em"/>
-        <Class IRI="#livro"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#aparece_em"/>
-        <Class IRI="#personagem"/>
+        <ObjectUnionOf>
+            <Class IRI="#personagem"/>
+            <Class IRI="#pessoa"/>
+        </ObjectUnionOf>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#escreveu"/>
@@ -195,14 +238,18 @@
         <ObjectProperty IRI="#gosta"/>
         <Class IRI="#pessoa"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#acontece_em"/>
-        <ObjectUnionOf>
-            <Class IRI="#ano"/>
-            <Class IRI="#mundo_ficticio"/>
-            <Class IRI="#periodo_historico"/>
-        </ObjectUnionOf>
-    </ObjectPropertyRange>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#historia_de"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#historia_em"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#vendeu"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#aparece_em"/>
         <Class IRI="#livro"/>
@@ -219,6 +266,33 @@
         <ObjectProperty IRI="#gosta"/>
         <Class IRI="#livro"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#historia_de"/>
+        <ObjectUnionOf>
+            <Class IRI="#personagem"/>
+            <Class IRI="#pessoa"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#historia_em"/>
+        <Class IRI="#mundo_ficticio"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#acontece_em"/>
+        <Class IRI="#livro"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#vendeu"/>
+        <Class IRI="#livro"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#acontece_em"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#vendeu"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
 </Ontology>
 
 
