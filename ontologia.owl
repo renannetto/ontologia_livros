@@ -46,9 +46,6 @@
         <Class IRI="#ficcao_historica"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#genero"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#livro"/>
     </Declaration>
     <Declaration>
@@ -81,9 +78,6 @@
     <Declaration>
         <ObjectProperty IRI="#gosta"/>
     </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#pertence_genero"/>
-    </Declaration>
     <EquivalentClasses>
         <Class IRI="#autor"/>
         <ObjectSomeValuesFrom>
@@ -93,44 +87,49 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#biografia"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#acontece_em"/>
-            <Class IRI="#ano"/>
-        </ObjectSomeValuesFrom>
+        <ObjectIntersectionOf>
+            <Class IRI="#nao_ficcao"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#acontece_em"/>
+                <Class IRI="#ano"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#fantasia"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#acontece_em"/>
-            <Class IRI="#mundo_ficticio"/>
-        </ObjectSomeValuesFrom>
+        <ObjectIntersectionOf>
+            <Class IRI="#ficcao"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#acontece_em"/>
+                <Class IRI="#mundo_ficticio"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#ficcao_cientifica"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#acontece_em"/>
-            <Class IRI="#ano"/>
-        </ObjectSomeValuesFrom>
+        <ObjectIntersectionOf>
+            <Class IRI="#ficcao"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#acontece_em"/>
+                <Class IRI="#ano"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#ficcao_historica"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#acontece_em"/>
-            <Class IRI="#periodo_historico"/>
-        </ObjectSomeValuesFrom>
+        <ObjectIntersectionOf>
+            <Class IRI="#ficcao"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#acontece_em"/>
+                <Class IRI="#periodo_historico"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#livro"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="#escrito_por"/>
             <Class IRI="#autor"/>
-        </ObjectSomeValuesFrom>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#livro"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#pertence_genero"/>
-            <Class IRI="#genero"/>
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -158,7 +157,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ficcao"/>
-        <Class IRI="#genero"/>
+        <Class IRI="#livro"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ficcao_cientifica"/>
@@ -170,7 +169,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#nao_ficcao"/>
-        <Class IRI="#genero"/>
+        <Class IRI="#livro"/>
     </SubClassOf>
     <InverseObjectProperties>
         <ObjectProperty IRI="#escrito_por"/>
@@ -196,10 +195,6 @@
         <ObjectProperty IRI="#gosta"/>
         <Class IRI="#pessoa"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#pertence_genero"/>
-        <Class IRI="#livro"/>
-    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#acontece_em"/>
         <ObjectUnionOf>
@@ -223,10 +218,6 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#gosta"/>
         <Class IRI="#livro"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#pertence_genero"/>
-        <Class IRI="#genero"/>
     </ObjectPropertyRange>
 </Ontology>
 
