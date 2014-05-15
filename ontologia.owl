@@ -61,6 +61,9 @@
         <Class IRI="#personagem"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#serie"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#aparece_em"/>
     </Declaration>
     <Declaration>
@@ -68,6 +71,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#escrito_por"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#faz_parte_da"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#historia_de"/>
@@ -79,6 +85,9 @@
         <ObjectProperty IRI="#leu"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#similar_a"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#vendido_para"/>
     </Declaration>
     <Declaration>
@@ -88,6 +97,9 @@
         <DataProperty IRI="#acontece_em_periodo"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#isbn"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#2001_Uma_Odisseia_no_Espaco"/>
     </Declaration>
     <Declaration>
@@ -95,6 +107,12 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Antonio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bilbo"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hobbit"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Inteligencia_Artificial"/>
@@ -119,6 +137,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Peter_Norvig"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Senhor_Dos_Aneis"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
@@ -151,12 +172,15 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#didatico"/>
-        <ObjectComplementOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#historia_de"/>
-                <Class IRI="#personagem"/>
-            </ObjectSomeValuesFrom>
-        </ObjectComplementOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#livro"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#historia_de"/>
+                    <Class IRI="#personagem"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#fantasia"/>
@@ -294,17 +318,32 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Ana"/>
-        <NamedIndividual IRI="#2001_Uma_Odisseia_no_Espaco"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Ana"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
+        <NamedIndividual IRI="#2001_Uma_Odisseia_no_Espaco"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Antonio"/>
         <NamedIndividual IRI="#O_Arqueiro"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#aparece_em"/>
+        <NamedIndividual IRI="#Bilbo"/>
+        <NamedIndividual IRI="#Hobbit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#escrito_por"/>
+        <NamedIndividual IRI="#Hobbit"/>
+        <NamedIndividual IRI="#Tolkien"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#similar_a"/>
+        <NamedIndividual IRI="#Hobbit"/>
+        <NamedIndividual IRI="#Senhor_Dos_Aneis"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#escrito_por"/>
@@ -314,12 +353,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Joao"/>
-        <NamedIndividual IRI="#O_Arqueiro"/>
+        <NamedIndividual IRI="#O_Guia_do_Mochileiro_das_Galaxias"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Joao"/>
-        <NamedIndividual IRI="#O_Guia_do_Mochileiro_das_Galaxias"/>
+        <NamedIndividual IRI="#O_Arqueiro"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
@@ -329,7 +368,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Pedro"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_o_Retorno_do_Rei"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
@@ -339,22 +378,17 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#leu"/>
         <NamedIndividual IRI="#Pedro"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_o_Retorno_do_Rei"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#faz_parte_da"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
+        <NamedIndividual IRI="#Senhor_Dos_Aneis"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#vendido_para"/>
         <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
-        <NamedIndividual IRI="#Mariana"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#vendido_para"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
-        <NamedIndividual IRI="#Ana"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#vendido_para"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
-        <NamedIndividual IRI="#Joao"/>
+        <NamedIndividual IRI="#Pedro"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#vendido_para"/>
@@ -364,7 +398,27 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#vendido_para"/>
         <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
-        <NamedIndividual IRI="#Pedro"/>
+        <NamedIndividual IRI="#Joao"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#vendido_para"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
+        <NamedIndividual IRI="#Ana"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#vendido_para"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_a_Sociedade_do_Anel"/>
+        <NamedIndividual IRI="#Mariana"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#faz_parte_da"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_as_Duas_Torres"/>
+        <NamedIndividual IRI="#Senhor_Dos_Aneis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#faz_parte_da"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_o_Retorno_do_Rei"/>
+        <NamedIndividual IRI="#Senhor_Dos_Aneis"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#historia_em"/>
@@ -374,7 +428,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#escreveu"/>
         <NamedIndividual IRI="#Tolkien"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_o_Retorno_do_Rei"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_as_Duas_Torres"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#escreveu"/>
@@ -384,8 +438,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#escreveu"/>
         <NamedIndividual IRI="#Tolkien"/>
-        <NamedIndividual IRI="#Senhor_dos_Aneis_as_Duas_Torres"/>
+        <NamedIndividual IRI="#Senhor_dos_Aneis_o_Retorno_do_Rei"/>
     </ObjectPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#faz_parte_da"/>
+        <ObjectProperty IRI="#similar_a"/>
+    </SubObjectPropertyOf>
     <InverseObjectProperties>
         <ObjectProperty IRI="#aparece_em"/>
         <ObjectProperty IRI="#historia_de"/>
@@ -394,12 +452,26 @@
         <ObjectProperty IRI="#escrito_por"/>
         <ObjectProperty IRI="#escreveu"/>
     </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#similar_a"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#similar_a"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aparece_em"/>
+        <Class IRI="#personagem"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#escreveu"/>
         <Class IRI="#autor"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#escrito_por"/>
+        <Class IRI="#livro"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#faz_parte_da"/>
         <Class IRI="#livro"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -415,6 +487,13 @@
         <Class IRI="#leitor"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#similar_a"/>
+        <ObjectUnionOf>
+            <Class IRI="#livro"/>
+            <Class IRI="#serie"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#vendido_para"/>
         <Class IRI="#livro"/>
     </ObjectPropertyDomain>
@@ -429,6 +508,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#escrito_por"/>
         <Class IRI="#autor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#faz_parte_da"/>
+        <Class IRI="#serie"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#historia_de"/>
@@ -443,6 +526,13 @@
         <Class IRI="#livro"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#similar_a"/>
+        <ObjectUnionOf>
+            <Class IRI="#livro"/>
+            <Class IRI="#serie"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#vendido_para"/>
         <Class IRI="#leitor"/>
     </ObjectPropertyRange>
@@ -454,12 +544,20 @@
         <DataProperty IRI="#acontece_em_periodo"/>
         <Class IRI="#livro"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isbn"/>
+        <Class IRI="#livro"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#acontece_em_ano"/>
         <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#acontece_em_periodo"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isbn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>
